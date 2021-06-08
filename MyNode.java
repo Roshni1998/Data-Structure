@@ -1,23 +1,36 @@
 package com.DataStructure;
 
-public class MyNode<K> {
+public class MyNode<K> implements INode<K> {
 	
 	//the structure of node is defined 
 	private K key; 
-	private MyNode next;
+	private INode next;
 	
 	//Parameterized Constructor
 	public MyNode(K key) {
-		this.key = null;
+		this.key = key;
 		this.next = null;
 	}
 
-	public MyNode getNext() {
+	@Override
+	public K getKey() {
+		return key;
+	}
+
+	@Override
+	public void setKey(K key) {
+		this.key =key;
+	}
+	
+	public INode<K> getNext() {
 		return next;
 	}
 
-	public void setNext(MyNode next) {
-		this.next = next;
+	@Override
+	public void setNext(INode next) {
+		this.next = (MyNode<K>) next;
+		
 	}
+
 	
 }
