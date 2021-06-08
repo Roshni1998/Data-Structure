@@ -2,7 +2,7 @@ package com.DataStructure;
 
 public class MyLinkedList {
 	/*
-	 * Linked List consist of a head and a tail. Creat a linked list of INode.
+	 * Linked List consist of a head and a tail. Create a linked list of INode.
 	 */
 	public INode head;
 	public INode tail;
@@ -27,7 +27,22 @@ public class MyLinkedList {
 			this.head = newNode; // head points to newNode.
 			this.head.setNext(tempNode); // 2nd node pointing to 1st.
 		}
+	}
 
+	public void append(INode newNode) {
+		if (this.head == null) {
+			this.head = newNode;
+		}
+		if (this.tail == null) {
+			this.tail = newNode;
+		} else {
+			/*
+			 * The current tail (56) next is pointing to the next new node. Now tail is
+			 * pointing to the new node (30).
+			 */
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+		}
 	}
 
 	// Print the node
