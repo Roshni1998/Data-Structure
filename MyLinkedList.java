@@ -11,7 +11,7 @@ public class MyLinkedList {
 		this.head = null;
 		this.tail = null;
 	}
-
+	//Add a node at the front
 	public void add(INode newNode) {
 		/*
 		 * head and tail both pointing to 1st node(70) Add 2nd node(30) to 1st node(70)
@@ -29,6 +29,7 @@ public class MyLinkedList {
 		}
 	}
 
+	//Add a node at the end
 	public void append(INode newNode) {
 		if (this.head == null) {
 			this.head = newNode;
@@ -43,6 +44,13 @@ public class MyLinkedList {
 			this.tail.setNext(newNode);
 			this.tail = newNode;
 		}
+	}
+		
+		//Insert a node between 2 nodes
+		public void insert(INode myNode, INode newNode) {
+			INode tempNode = myNode.getNext();
+			myNode.setNext(newNode);
+			newNode.setNext(tempNode);
 	}
 
 	// Print the node
