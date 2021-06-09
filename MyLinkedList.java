@@ -53,7 +53,6 @@ public class MyLinkedList {
 		this.head = head.getNext();
 		return tempNode;
 	}
-	
 
 	// Print the node
 	public void printMyNode() {
