@@ -15,16 +15,14 @@ public class MyLinkedListTest {
 		MyLinkedList myLinkedList = new MyLinkedList();
 		// Node added to the front
 		myLinkedList.add(myFirstNode);
-		// Node added to the end
+		//Append the next node
+		myLinkedList.append(mySecondNode);
 		myLinkedList.append(myThirdNode);
-		// Node added b/w two nodes
-		myLinkedList.insert(myFirstNode, mySecondNode);
+		myLinkedList.printMyNode();
+		//Pop-out the 1st node
 		myLinkedList.pop();
 		myLinkedList.printMyNode();
-		// Creating the linked list
-		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode) && myLinkedList.tail.equals(myThirdNode);
+		boolean result = myLinkedList.head.equals(mySecondNode) && myLinkedList.tail.equals(myThirdNode);
 		Assert.assertTrue(result);
-
 	}
-
 }
