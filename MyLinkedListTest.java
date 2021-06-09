@@ -21,8 +21,9 @@ public class MyLinkedListTest {
 		myLinkedList.printMyNode();
 		//Pop-out 1st node
 		myLinkedList.pop();
+		myLinkedList.popLast();
 		myLinkedList.printMyNode();
-		boolean result = myLinkedList.head.equals(mySecondNode) && myLinkedList.tail.equals(myThirdNode);
+		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.tail.equals(mySecondNode);
 		Assert.assertTrue(result);
 	}
 }
