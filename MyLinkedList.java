@@ -47,12 +47,20 @@ public class MyLinkedList {
 		}
 	}
 
+	// Insert a node between 2 nodes
+	public void insert(INode myNode, INode newNode) {
+		INode tempNode = myNode.getNext();
+		myNode.setNext(newNode);
+		newNode.setNext(tempNode);
+	}	
+
 	// Pop-out the 1st node(56)
 	public INode pop() {
 		INode tempNode = this.head;
 		this.head = head.getNext();
 		return tempNode;
 	}
+	
 
 	// Print the node
 	public void printMyNode() {
