@@ -52,7 +52,7 @@ public class MyLinkedList {
 		INode tempNode = myNode.getNext();
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
-	}	
+	}
 
 	// Pop-out the 1st node(56)
 	public INode pop() {
@@ -60,7 +60,16 @@ public class MyLinkedList {
 		this.head = head.getNext();
 		return tempNode;
 	}
-	
+
+	// Pop-out the last node(70)
+	public INode popLast() {
+		INode tempNode = head;
+		while (!tempNode.getNext().equals(tail)) {
+			this.tail = tempNode;
+			tempNode = tempNode.getNext();
+		}
+		return tempNode;
+	}
 
 	// Print the node
 	public void printMyNode() {

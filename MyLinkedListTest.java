@@ -19,7 +19,10 @@ public class MyLinkedListTest {
 		myLinkedList.append(myThirdNode);
 		// Node added b/w two nodes
 		myLinkedList.insert(myFirstNode, mySecondNode);
+		//Pop-out 1st node
 		myLinkedList.pop();
+		//Pop-out last node
+		myLinkedList.popLast();
 		myLinkedList.printMyNode();
 		// Creating the linked list
 		boolean result = myLinkedList.head.equals(myFirstNode) && myLinkedList.head.getNext().equals(mySecondNode) && myLinkedList.tail.equals(myThirdNode);
