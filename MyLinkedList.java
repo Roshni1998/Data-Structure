@@ -10,6 +10,7 @@ public class MyLinkedList<K> {
 		private K key;
 		private Node<K> next;
 
+		// Constructor
 		public Node(K key) {
 			super();
 			this.key = key;
@@ -18,25 +19,20 @@ public class MyLinkedList<K> {
 	}
 
 	/**
-	 * This method takes search key as an argument and returns true if search key
-	 * found else false
+	 * This method insert a node at given position
 	 * 
-	 * @param seachKey data to be searched in list
-	 * @return return true if search key found else false
+	 * @param data     Node value has to insert
+	 * @param position
 	 */
-	public boolean contains(K seachKey) {
-		if (head == null) {
-			return false;
-		}
+	public void insertAtPosition(K key, int position) {
 
+		Node<K> newNode = new Node<K>(key);
 		Node<K> currentNode = head;
-		while (currentNode != null) {
-			if (currentNode.key == seachKey) {
-				return true;
-			}
+		for (int i = 0; i < position - 1; i++) {
 			currentNode = currentNode.next;
 		}
-		return false;
+		newNode.next = currentNode.next;
+		currentNode.next = newNode;
 	}
 
 	/**
@@ -71,21 +67,20 @@ public class MyLinkedList<K> {
 
 	public static void main(String[] args) {
 
-		MyLinkedList<Integer> linkedList = new MyLinkedList<>();
-		linkedList.insert(56);
-		linkedList.insert(30);
-		linkedList.insert(70);
+		MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+		myLinkedList.insert(56);
+		myLinkedList.insert(30);
+		myLinkedList.insert(70);
 
-		System.out.println("Linked List is:");
-		linkedList.printMyLinkedList();
+		System.out.println("Original Linked List is:");
+		myLinkedList.printMyLinkedList();
+		System.out.println();
 
-		int seachKey = 30;
+		int position = 2;
+		int nodeKey = 40;
 
-		if (linkedList.contains(seachKey)) {
-			System.out.println(seachKey + " found in Linked List!!");
-		} else {
-			System.out.println(seachKey + " not found in Linked List!!");
-		}
-
+		System.out.println("Adding a node with Value " + nodeKey + " at position : " + position);
+		myLinkedList.insertAtPosition(nodeKey, position);
+		myLinkedList.printMyLinkedList();
 	}
 }
