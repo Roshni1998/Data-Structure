@@ -1,80 +1,91 @@
 package com.DataStructure;
 
-public class MyLinkedList {
-	/*
-	 * Linked List consist of a head and a tail. Create a linked list of INode.
+public class MyLinkedList<K> {
+
+	private Node<K> head;
+
+	// This internal class represents Node in Linked List
+	private static class Node<K> {
+
+		private K key;
+		private Node<K> next;
+
+		public Node(K key) {
+			super();
+			this.key = key;
+			this.next = null;
+		}
+	}
+
+	/**
+	 * This method takes search key as an argument and returns true if search key
+	 * found else false
+	 * 
+	 * @param seachKey data to be searched in list
+	 * @return return true if search key found else false
 	 */
-	public INode head;
-	public INode tail;
+	public boolean contains(K seachKey) {
+		if (head == null) {
+			return false;
+		}
 
-	public MyLinkedList() {
-		this.head = null;
-		this.tail = null;
+		Node<K> currentNode = head;
+		while (currentNode != null) {
+			if (currentNode.key == seachKey) {
+				return true;
+			}
+			currentNode = currentNode.next;
+		}
+		return false;
 	}
 
-	// Add a node at the front
-	public void add(INode newNode) {
-		/*
-		 * head and tail both pointing to 1st node(70) Add 2nd node(30) to 1st node(70)
-		 * at front.
-		 */
-		if (this.head == null) {
-			this.head = newNode;
-		}
-		if (this.tail == null) {
-			this.tail = newNode;
+	/**
+	 * This method insert Node in Linked List
+	 * 
+	 * @param data has to insert in the List
+	 */
+	public void insert(K data) {
+		Node<K> newNode = new Node<K>(data);
+		if (head == null) {
+			head = newNode;
 		} else {
-			INode tempNode = this.head; // tempNode is going to be head.
-			this.head = newNode; // head points to newNode.
-			this.head.setNext(tempNode); // 2nd node pointing to 1st.
+			Node<K> currentNode = head;
+			while (currentNode.next != null) {
+				currentNode = currentNode.next;
+			}
+			currentNode.next = newNode;
 		}
 	}
 
-	// Add a node at the end
-	public void append(INode newNode) {
-		if (this.head == null) {
-			this.head = newNode;
+	/**
+	 * Method which traverse Linked List and display all data.
+	 */
+	public void printMyLinkedList() {
+		Node<K> currentNode = head;
+		while (currentNode != null) {
+			System.out.print(currentNode.key + "->");
+			currentNode = currentNode.next;
 		}
-		if (this.tail == null) {
-			this.tail = newNode;
+		System.out.println(currentNode);
+	}
+
+	public static void main(String[] args) {
+
+		MyLinkedList<Integer> linkedList = new MyLinkedList<>();
+		linkedList.insert(56);
+		linkedList.insert(30);
+		linkedList.insert(70);
+
+		System.out.println("Linked List is:");
+		linkedList.printMyLinkedList();
+
+		int seachKey = 30;
+
+		if (linkedList.contains(seachKey)) {
+			System.out.println(seachKey + " found in Linked List!!");
 		} else {
-			/*
-			 * The current tail (56) next is pointing to the next new node. Now tail is
-			 * pointing to the new node (30).
-			 */
-			this.tail.setNext(newNode);
-			this.tail = newNode;
+			System.out.println(seachKey + " not found in Linked List!!");
 		}
-	}
 
-	// Pop-out the 1st node(56)
-	public INode pop() {
-		INode tempNode = this.head;
-		this.head = head.getNext();
-		return tempNode;
 	}
-
-	// Pop-out the last node(70)
-	public void popLast() {
-		INode tempNode = head;
-		while (tempNode.getNext().equals(tail)) {
-			tempNode = tempNode.getNext();
-		}
-		this.tail = tempNode;
-		tempNode.setNext(null);
-	}
-
-	// Print the node
-	public void printMyNode() {
-		StringBuffer myNodes = new StringBuffer("My Nodes: ");
-		INode tempNode = head;
-		while (tempNode.getNext() != null) {
-			myNodes.append(tempNode.getKey());
-			myNodes.append(" -> ");
-			tempNode = tempNode.getNext();
-		}
-		myNodes.append(tempNode.getKey());
-		System.out.println(myNodes);
-	}
-
 }
